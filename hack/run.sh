@@ -3,4 +3,8 @@
 set -euo pipefail
 set -x
 
-systemd-socket-activate --listen "`pwd`/service.sock" ./bin/server
+DEFAULT=(
+    ./bin/server
+)
+
+systemd-socket-activate --listen "$(pwd)/service.sock" "${@:-${DEFAULT[@]}}"

@@ -11,6 +11,13 @@ make bin/server
 ./hack/run.sh
 ```
 
+or
+
+```
+./hack/runc.sh
+./hack/run.sh runc run config 1
+```
+
 and
 
 ```
@@ -26,7 +33,9 @@ At this point, I expect the architecture to be roughly: listening daemon outside
 ### Questions
 
 - How does passing fds between namespaces work?
+  - Well, before I get into the whole domain socket thing, it seems runc has some provision for this: https://github.com/opencontainers/runc/blob/master/docs/terminals.md#other-file-descriptors
 - Can we effectively use "run once" mode here? A program that takes a single fd and writes Stuff to it is very easy to build.
+  - Current sticking point: http package isn't built to handle a single connection, but instead to Accept
 - What about "run for a while
 - <something forgotten here>
 - Boldly: can we do something cross-machine? Much larger project, that.
