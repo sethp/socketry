@@ -15,7 +15,7 @@ or
 
 ```
 ./hack/runc.sh
-./hack/run.sh runc run config 1
+./hack/run.sh runc run server
 ```
 
 and

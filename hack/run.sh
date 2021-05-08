@@ -7,4 +7,7 @@ DEFAULT=(
     ./bin/server
 )
 
-systemd-socket-activate --listen "$(pwd)/service.sock" "${@:-${DEFAULT[@]}}"
+systemd-socket-activate \
+    -E XDG_RUNTIME_DIR \
+    --listen "$(pwd)/service.sock" \
+    "${@:-${DEFAULT[@]}}"
